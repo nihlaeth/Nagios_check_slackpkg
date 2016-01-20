@@ -3,6 +3,7 @@
 
 import subprocess
 import sys
+import os
 
 # pylint: disable=invalid-name
 
@@ -25,8 +26,9 @@ if updates == "idk":
     sys.exit(3)
 elif updates == "yes":
     # fetch updated package list
+    devnull = open(os.devnull, 'w')
     try:
-        subprocess.check_call("slackpkg update")
+        subprocess.check_call("slackpkg update", shell=True, stdout=devnull)
     except (OSError, subprocess.CalledProcessError) as error:
         print "Failed to update package list: %s" % error
         sys.exit(3)
