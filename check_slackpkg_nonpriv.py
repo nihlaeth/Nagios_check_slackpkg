@@ -27,7 +27,7 @@ if updates == "idk":
 elif updates == "yes":
     # fetch updated package list
     try:
-        _ = subprocess.check_output("myslackpkg update", shell=True)
+        _ = subprocess.check_output("myslackpkg update &> /dev/null", shell=True)
     except (OSError, subprocess.CalledProcessError) as error:
         print "Failed to update package list: %s" % error
         sys.exit(3)
