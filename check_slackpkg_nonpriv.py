@@ -48,6 +48,9 @@ packages = []
 for line in result:
     if ".txz" in line:
         packages.append(line.strip())
+    if "update gpg" in line:
+        print "Error: need up-to-date gpg key!"
+        sys.exit(3)
 
 if len(packages) == 0:
     print "OK: everything up-to-date"
