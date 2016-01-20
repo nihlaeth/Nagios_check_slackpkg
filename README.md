@@ -9,4 +9,13 @@ You also need to make sure your user has the correct gpg keys in their home dire
 
 Caveat: myslackpkg won't blindly parrot arguments you pass to it. But it's by no means 100% secure. Using setuid root on this binary is a security risk. Patches are welcome - otherwise I'll come back to it when I have a better grasp of the C language.
 
+Example nagios command definition:
+'''
+# 'check_remote_slackpkg' command definition
+define command{
+    command_name    check_remote_slackpkg
+    command_line    $USER1$/check_by_ssh -H $HOSTADDRESS$ -C "TERM=xterm bin/check_slackpkg_nonpriv.py"
+    }
+'''
+
 Author: Nihlaeth <info@nihlaeth.nl>
