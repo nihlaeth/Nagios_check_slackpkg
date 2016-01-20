@@ -3,6 +3,9 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
+    if (argc > 2){
+        return 3;
+    }
     setreuid(geteuid(), geteuid());
     setregid(getegid(), getegid());
     if (strcmp(argv[1], "check-updates") == 0) {
