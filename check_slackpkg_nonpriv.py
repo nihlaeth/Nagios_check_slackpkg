@@ -28,7 +28,7 @@ elif updates == "yes":
     # fetch updated package list
     devnull = open(os.devnull, 'w')
     try:
-        subprocess.check_call("myslackpkg update", stdout=devnull)
+        subprocess.check_call("myslackpkg update", stdout=devnull, shell=True)
     except (OSError, subprocess.CalledProcessError) as error:
         print "Failed to update package list: %s" % error
         sys.exit(3)
